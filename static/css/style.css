@@ -112,6 +112,9 @@ body {
     background-color: transparent;
     border: none;
     position: relative;
+    left: 0;
+    top: 0;
+    transition: all 250ms ease-out;
 }
 
 .location button:hover{
@@ -121,6 +124,7 @@ body {
 }
 
 .location button:active {
+    transition: none;
     top: 5px;
     left: 5px;
 }
