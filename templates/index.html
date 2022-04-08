@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename="../static/css/style.css")}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <title>Ninja Gold!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content flex">
+            <div class="header">
+                <div class="yourGold flex">
+                    <h1 class="largeFont">Your Gold:</h1>
+                    <h1 id="goldCounter" class="largeFont">{{ session['gold'] }}</h1>
+                    <img src="../static/img/coin.gif" alt="">
+                </div>
+                {% if session['moves'] > 0 %}
+                    <div class="moves">
+                        <img id="playing" src="../static/img/ninja_playing.gif" alt="">
+                        <h1>You have {{ session['moves'] }} moves left!</h1>
+                    </div>
+                {% elif session['moves'] <= 0 and session['gold'] < 300 %}
+                    <div class="resetBtn">
+                        <img id="lose" src="../static/img/ninja-lose.gif" alt="">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="reset">
+                            <button type="submit">Reset!</button>
+                        </form>
+                    </div>
+                {% elif session['moves'] <= 0 and session['gold'] >= 300 %}
+                    <div class="resetBtn">
+                        <img id="win" src="../static/img/ninja-win.png" alt="">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="reset">
+                            <button type="submit">Reset!</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="rowLocations flex mediumFont">
+                <div class="location farm flex">
+                    <div class="locationContent">
+                        <h2>Farm</h2>
+                        {% if session['moves'] > 0 %}
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="10,20,farm">
+                            <button type="submit"><img src="../static/img/farm_button.png" alt=""></button>
+                        </form>
+                        {% else %}
+                        <button type="submit"><img src="../static/img/farm_button.png" alt=""></button>
+                        {% endif %}
+                        <h3>(earns 10-20 gold)</h3>
+                    </div>
+                </div>
+                <div class="location cave flex">
+                    <div class="locationContent">
+                        <h2>Cave</h2>
+                        {% if session['moves'] > 0 %}
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="5,10,cave">
+                            <button type="submit"><img src="../static/img/cave_button.png" alt=""></button>
+                        </form>
+                        {% else %}
+                        <button type="submit"><img src="../static/img/cave_button.png" alt=""></button>
+                        {% endif %}
+                        <h3>(earns 5-10 gold)</h3>
+                    </div>
+                </div>
+                <div class="location house flex">
+                    <div class="locationContent">
+                        <h2>House</h2>
+                        {% if session['moves'] > 0 %}
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="2,5,house">
+                            <button type="submit"><img src="../static/img/house_button.webp" alt=""></button>
+                        </form>
+                        {% else %}
+                        <button type="submit"><img src="../static/img/house_button.webp" alt=""></button>
+                        {% endif %}
+                        <h3>(earns 2-5 gold)</h3>
+                    </div>
+                </div>
+                <div class="location casino flex">
+                    <div class="locationContent">
+                        <h2>Casino</h2>
+                        {% if session['moves'] > 0 %}
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="which_form" value="-50,50,casino">
+                            <button type="submit"><img src="../static/img/casino_button.webp" alt=""></button>
+                        </form>
+                        {% else %}
+                        <button type="submit"><img src="../static/img/casino_button.webp" alt=""></button>
+                        {% endif %}
+                        <h3>(earn/lose 0-50 gold)</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="rowActivities flex mediumFont">
+                <h4>Activities:</h4>
+                <div class="activitiesContainer">
+                    {% for message in session['message']|reverse %}
+                        {{ message|safe }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

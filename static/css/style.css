@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.largeFont {
+    font-size: 50px;
+}
+
+.mediumFont {
+    font-size: 25px;
+}
+
+
+body {
+    background: white url("../img/landscape_background.jpg") center no-repeat;
+    color: white;
+    font-family: 'Nanum Brush Script', cursive;
+    letter-spacing: 2px;
+}
+
+.flex{
+    display: flex;
+}
+.container{
+    width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    padding: 50px;
+}
+
+.content {
+    flex-direction: column;
+    gap: 50px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header img{
+    height: 35px;
+}
+
+.moves {
+    display: flex;
+    align-items: center;
+}
+
+.resetBtn{
+    display: flex;
+    align-items: center;
+}
+
+#playing {
+    height: 60px;
+}
+
+#lose {
+    height: 60px;
+}
+
+#win {
+    height: 60px;
+}
+
+.header button{
+    padding: 15px;
+    font-family: 'Nanum Brush Script', cursive;
+    font-size: 30px;
+    font-weight: 900;
+    border-radius: 15px;
+    border: none;
+    background-color: gold;
+}
+
+
+.yourGold {
+    gap: 25px;
+    align-items: center;
+}
+
+.rowLocations {
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.location {
+    flex-direction: column;
+    gap: 40px;
+    background-color: aqua;
+    padding: 50px 50px;
+    flex: 1
+}
+
+.locationContent {
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    padding: 10px;
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.location button {
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+
+.location button:hover{
+    top: -5px;
+    left: -5px;
+    cursor: pointer;
+}
+
+.location button:active {
+    top: 5px;
+    left: 5px;
+}
+
+.farm img {
+    width: 125px;
+    height: auto;
+}
+
+.cave img {
+    width: 125px;
+    height: auto;
+}
+
+.house img {
+    width: 150px;
+    height: auto;
+}
+
+.casino img {
+    width: 175px;
+    height: auto;
+}
+
+.farm {
+    background-image: url("../img/farm_background.jpg");
+    border-radius: 25px;
+}
+
+.cave {
+    background-image: url("../img/cave_background.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+}
+
+.house {
+    background-image: url("../img/house_background.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+}
+
+.casino {
+    background-image: url("../img/casino_background.jpg");
+    border-radius: 25px;
+    background-position: center;
+    background-size: cover;
+}
+
+.rowActivities{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.activitiesContainer {
+    background-color: lightgray;
+    height: 200px;
+    width: 100%;
+    text-align: left;
+    overflow: scroll;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(68, 68, 68);
+    border-radius: 15px;
+    height: 25px;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.activitiesContainer p {
+    margin: 15px 0 0 15px;
+    font-weight: 900;
+}
+
+.green {
+    color: rgb(0, 75, 0);
+}
+
+.red {
+    color: rgb(130, 0, 0);
+}
+
